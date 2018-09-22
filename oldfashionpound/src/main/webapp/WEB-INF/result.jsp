@@ -1,0 +1,83 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Result</title>
+ <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+<style>
+body {
+	background-color: bisque;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+p {
+	color: red;
+	font-size : x-large;
+}
+
+
+</style>
+
+
+</head>
+<body>
+	<%-- <h1 style="color:DodgerBlue;text-align: center;" >Welcome to Finsoft ${currentuser}  </h1> --%>
+	<h1 style="color: Green; text-align: center;padding-top: 100px;">Result of ${act}
+	</h1>
+     
+	<div class="container">
+	     <a class="button" href="/welcome">Back to WELCOME PAGE</a>
+	</div>
+
+	<div class="container"
+		style="height: 200px; width: 50%; text-align: center">
+		      
+         <c:choose>
+		  <c:when test="${act=='somma' || act =='sottrazione'}">
+			<p> Pound_1 : ${pound1.p}p+${pound1.s}s+${pound1.d}d </p>
+			<p>Pound_2 : ${pound2.p}p+${pound2.s}s+${pound2.d}d</p>
+			<h2>Result : ${poundresult.p}p+${poundresult.s}s+${poundresult.d}d</h2>
+		  </c:when>
+
+        
+         <c:when test="${act =='multiplicazione' || act =='divisione'}"> 
+			<p> Pound_1: ${pound1.p}p+${pound1.s}s+${pound1.d}d </p>
+			<p>fattore : ${f}</p>
+			<h2>Result: ${poundresult.p}p+${poundresult.s}s+${poundresult.d}d
+			<c:if test="${act == 'divisione'}"> --${poundresult.r}a</c:if>
+			</h2>
+		 </c:when>
+         </c:choose>
+		<h3> ${errore}</h3>
+	</div>
+
+
+</body>
+</html>
